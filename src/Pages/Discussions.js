@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Discussions.css';
 import Discussion from '../Component/Discussion';
+import styled from 'styled-components';
 
 function Discussions() {
     const [question, setQuestion] = useState([]);
@@ -9,7 +10,7 @@ function Discussions() {
 
     useEffect(() => {
         getQuestion();
-      }, []);
+    }, []);
 
     const getQuestion = () => {
         fetch('http://localhost:4000/discussions')
@@ -18,7 +19,7 @@ function Discussions() {
     }
 
     const handleButtonClick = () => {
-        fetch('http://localhost:4000/discussions',{
+        fetch('http://localhost:4000/discussions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -34,12 +35,12 @@ function Discussions() {
             .then((response) => response.json())
             .then((data) => getQuestion(data));
     }
-  
+
     const handleDeleteClick = (id) => {
         fetch(`http://localhost:4000/discussions/${id}`, {
             method: 'DELETE'
         })
-        .then((response) => { getQuestion(response) })
+            .then((response) => { getQuestion(response) })
     }
 
     const handleChangeAuthor = (event) => {
