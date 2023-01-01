@@ -1,45 +1,12 @@
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import { useState } from 'react';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { darkTheme, lightTheme } from './theme';
 
 import Header from './Pages/Header';
 import Discussions from './Pages/Discussions.js';
 
 const GlobalStyle = createGlobalStyle`
-:root {
-    /* body color */
-    --body_bg: #dcdcdc;
-
-    /* header color */
-    --header_text: #1676f2;
-    --header_bg: white;
-
-    /* container color */
-    --container_bg: white;
-    --container_label: black;
-    --container_input: #f0f2f6;
-    --container_input_text: black;
-    --container_submit_bg: #1676f2;
-    --container_submit_text: white;
-    /* hover container color */
-    --hover_container_input: #f0f2f6;
-    --hover_container_input_border: #1676f2;
-    --hover_container_submit_bg: #6E9FED;
-    --hover_container_submit_text: white;
-    /* focus container color */
-    --focus_container_input: #f0f2f6;
-    --focus_container_input_border: #1676f2;
-    
-    /* discussion color */
-    --discussion_bg: white;
-    --discussion_text: black;
-    --discussion_a: black;
-    /* hover discussion color */
-    --hover_discussion_bg: #e4e6ea;
-
-    /* toggle */
-    --toggle_bg: #1676f2;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -49,8 +16,8 @@ const GlobalStyle = createGlobalStyle`
 body {
   display: flex;
   justify-content: center;
-  background-color: #dcdcdc;
   height: 100vh;
+  background-color: ${(props) => props.theme.body_bg};
 }
 
 main {
@@ -61,14 +28,22 @@ main {
 
 function App() {
 
+  const [isOn, setisOn] = useState(false);
+
+  const toggleHandler = () => {
+    setisOn(!isOn)
+  };
+
   return (
-    <div className="App">
-      <GlobalStyle />
-      <main>
-        <Header />
-        <Discussions />
-      </main>
-    </div>
+    <ThemeProvider theme={isOn ? darkTheme : lightTheme}>
+      <div className="App">
+        <GlobalStyle />
+        <main>
+          <Header isOn={isOn} toggleButton={toggleHandler} />
+          <Discussions />
+        </main>
+      </div>
+    </ThemeProvider>
   )
 }
 

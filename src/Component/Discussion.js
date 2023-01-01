@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 const DiscussionContainer = styled.li`
     display: flex;
-    background-color: var(--discussion_bg);
+    background-color: ${(props) => props.theme.discussion_bg};
     border-radius: 15px;
     padding: 10px;
     height: 80px;
     margin-bottom: 10px;
 
 &:hover {
-    background-color: var(--hover_discussion_bg);
+    background-color: ${(props) => props.theme.hover_discussion_bg};
 }
 
 .discussion__avatar--wrapper {
@@ -40,7 +40,7 @@ img {
 
 .link {
     text-decoration-line: none;
-    color: var(--discussion_a);
+    color: ${(props) => props.theme.discussion_a};
     font-weight: 600;
     display: block;
     height: 100%;
@@ -50,6 +50,7 @@ img {
     text-align: right;
     font-size: 14px;
     flex: 1;
+    color: ${(props) => props.theme.discussion_text};
 }
 
 .discussion__answered {
@@ -57,6 +58,7 @@ img {
     text-align: center;
     font-size: 25px;
     margin: 16px 10px 0px 0px;
+    color: ${(props) => props.theme.discussion_text};
 }
 
 .delete_Wrapper {
@@ -71,7 +73,7 @@ img {
     height: 30px;
     border-radius: 5px;
     border: none;
-    color: var(--container_submit_text);
+    color: ${(props) => props.theme.container_submit_text};
     font-size: 12px;
     margin-bottom: 15px;
 }
@@ -94,7 +96,7 @@ function Discussion({ list, deleteButton }) {
                 <div className="discussion__information">{list.author + `/` + new Date(list.createdAt).toLocaleString()}</div>
             </div>
             <div className="delete_Wrapper">
-                <button className='deleteButton' onClick={() => deleteButton(list.id)}>삭제</button>
+                <button className='deleteButton' onClick={() => deleteButton(list.id)}><i className="fa-regular fa-trash-can"></i></button>
             </div>
         </DiscussionContainer>
     );

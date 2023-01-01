@@ -1,21 +1,20 @@
 import React from 'react';
-import { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
 display: flex;
 height: 70px;
-background-color: var(--header_bg);
+background-color: ${(props) => props.theme.header_bg};
 border-radius: 15px;
 margin: 10px 0px 10px 0px;
 align-items: center;
-color: var(--header_text);
+color: ${(props) => props.theme.header_text};
 padding-right: 20px;
 `;
 
 const StyledTitle = styled.h1`
 padding-left: 20px;
-flex: 9 0 0;
+flex: 8 0 0;
 `;
 
 const Toggle = styled.div`
@@ -23,7 +22,6 @@ const Toggle = styled.div`
   cursor: pointer;
   left: 2%;
   flex: 1 0 0;
-  margin-left: 10px;
 
   .toggle-container {
     width: 50px;
@@ -32,7 +30,7 @@ const Toggle = styled.div`
     background-color: #8b8b8b;
   }
   .toggle--checked {  // 토글 버튼 클릭 시 배경화면 컬러 변경 부분
-    background-color: var(--toggle_bg);
+    background-color: ${(props) => props.theme.toggle_bg};
     left: 27px;
     transition: 0.3s;
   }
@@ -53,24 +51,23 @@ const Toggle = styled.div`
   }
 `;
 
-function Header() {
-    const [isOn, setisOn] = useState(false);
+function Header({ isOn, toggleButton }) {
 
-    const toggleHandler = () => {
-        setisOn(!isOn)
-    };
-
-    return (
-        <StyledHeader>
-            <StyledTitle>
-                My Agora States
-            </StyledTitle>
-            <Toggle onClick={toggleHandler}>
-                <div className={`toggle-container ${isOn ? "toggle--checked" : null}`} />
-                <div className={`toggle-circle ${isOn ? "toggle--checked" : null}`} />
-            </Toggle>
-        </StyledHeader>
-    );
+  return (
+    <StyledHeader>
+      <StyledTitle>
+        My Agora States
+      </StyledTitle>
+      <Toggle onClick={toggleButton}>
+        <div className={`toggle-container ${isOn ? "toggle--checked" : null}`} />
+        <div className={`toggle-circle ${isOn ? "toggle--checked" : null}`} />
+      </Toggle>
+    </StyledHeader>
+  );
 }
 
 export default Header;
+
+
+
+

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Discussion from '../Component/Discussion';
 
 const InputContainer = styled.div`
-    background-color: var(--container_bg);
+    background-color: ${(props) => props.theme.container_bg};
     border-radius: 15px;
 
 .input {
@@ -24,12 +24,12 @@ const InputContainer = styled.div`
 .name,
 .title,
 .question {
-    color: var(--container_input_text);
+    color: ${(props) => props.theme.container_input_text};
 }
 
 .input__author:hover, .input__title:hover, .input__question:hover {
-    background-color: var(--hover_container_input);
-    border: 3px solid var(--hover_container_input_border);
+    background-color: ${(props) => props.theme.hover_container_input};
+    border: 3px solid ${(props) => props.theme.hover_container_input_border};
     outline: none;
 }
 
@@ -39,7 +39,7 @@ const InputContainer = styled.div`
     height: 30px;
     border-radius: 7px;
     border: none;
-    background-color: var(--container_input);
+    background-color: ${(props) => props.theme.container_input};
 }
 
 .submit_Wrapper {
@@ -53,18 +53,18 @@ const InputContainer = styled.div`
 .submitButton {
     text-align: center;
     margin-top: 10px;
-    background-color: var(--container_submit_bg);
+    background-color: ${(props) => props.theme.container_submit_bg};
     width: 100%;
     height: 35px;
     border-radius: 8px;
     border: none;
-    color: var(--container_submit_text);
+    color: ${(props) => props.theme.container_submit_text};
     font-size: 15px;
     margin-bottom: 15px;
 }
 
 .submitButton:hover {
-    background-color: var(--hover_container_submit_bg);
+    background-color: ${(props) => props.theme.hover_container_submit_bg};
     transition: 0.2s;
 }
 `;

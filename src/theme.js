@@ -14,7 +14,7 @@ export const lightTheme = {
     container_submit_bg: '#1676f2',
     container_submit_text: 'white',
     /* hover container color */
-    hover_container_input: '#f0f2f6',
+    hover_container_input: '#f0f2f6',  // 
     hover_container_input_border: '#1676f2',
     hover_container_submit_bg: '#6E9FED',
     hover_container_submit_text: 'white',
@@ -67,10 +67,3 @@ export const lightTheme = {
     /* toggle */
     toggle_bg: '#393b3d',
   };
-
-  export const theme = {
-    lightTheme,
-    darkTheme,
-  };
-
-  export default theme;
